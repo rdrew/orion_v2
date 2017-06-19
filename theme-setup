@@ -2,18 +2,37 @@
 
 
 #get the vars
-echo "What is the machine name of the new theme:"
+echo "
+###################################################
+### What is the machine name of the new theme:  ###
+###################################################
+"
 read themeName
 #echo "What is the display name of the new theme:"
 #read themeNameD
 
-echo "Installing Dependancies"
-echo "...from bower"
+echo "
+###########################################
+### Installing Dependancies from Bower  ###
+###########################################
+"
 bower install
-echo " Done "
-echo "...from NPM"
+echo "
+#############
+### Done ###
+#############
+"
+echo "
+###########################################
+### Installing Dependancies from Bower  ###
+###########################################
+"
 npm install
-echo " Done "
+echo "
+#############
+### Done ###
+#############
+"
 
 
 #make backup dir
@@ -22,13 +41,21 @@ mkdir bkup
 mv *.libraries.yml *.info.yml config.yml bkup
 #mv *.libraries.yml bkup
 
-echo "created bkup dir"
+echo "
+##################################
+### made backups just in case  ###
+##################################
+"
 
 #rename the files
 cp STARTERKIT/STARTERKIT.info.yml ./$themeName.info.yml
 cp STARTERKIT/STARTERKIT.libraries.yml ./$themeName.libraries.yml
 cp STARTERKIT/config.yml .
-echo "renamed the files"
+echo "
+##########################
+### Renamed the files  ###
+##########################
+"
 
 #insert the name in a few files
 grep -rl STARTERKIT *.yml | xargs sed -i '' -e "s/STARTERKIT/$themeName/"
@@ -36,7 +63,11 @@ grep -rl STARTERKIT *.yml | xargs sed -i '' -e "s/STARTERKIT/$themeName/"
 
 
 
-echo "Create a clean git repo?"
+echo "
+#################################
+### Create a clean git repo?  ###
+#################################
+"
 read choice
 case "$choice" in
   y)
@@ -56,6 +87,9 @@ case "$choice" in
 esac
 
 echo "edited the files"
-echo "Done :-)"
-
+echo "
+#################
+### Done :-)  ###
+#################
+"
 
